@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь мероприятий</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📅 Календарь мероприятий</h1>
+        
+        <!-- 3 колонки с мероприятиями -->
+        <div class="columns-grid">
+            <!-- Колонка 1: Сейчас идёт -->
+            <div class="column">
+                <div class="column-header">
+                    <h2>🔴 Сейчас идёт</h2>
+                </div>
+                <div id="nowEvents" class="events-list"></div>
+                <div id="nowPagination" class="pagination"></div>
+            </div>
+            
+            <!-- Колонка 2: Сегодня запланировано -->
+            <div class="column">
+                <div class="column-header">
+                    <h2>📅 Сегодня запланировано</h2>
+                </div>
+                <div id="todayEvents" class="events-list"></div>
+                <div id="todayPagination" class="pagination"></div>
+            </div>
+            
+            <!-- Колонка 3: На неделе -->
+            <div class="column">
+                <div class="column-header">
+                    <h2>📆 На неделе</h2>
+                </div>
+                <div id="weekEvents" class="events-list"></div>
+                <div id="weekPagination" class="pagination"></div>
+            </div>
+        </div>
+        
+        <!-- Календарь -->
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <h2>📆 Календарь событий</h2>
+                <div class="calendar-nav">
+                    <button id="prevMonth">←</button>
+                    <button id="nextMonth">→</button>
+                </div>
+            </div>
+            
+            <div class="calendar-filters">
+                <label>
+                    <input type="checkbox" value="all"> Все
+                </label>
+                <label>
+                    <input type="checkbox" value="current"> Сейчас идёт
+                </label>
+                <label>
+                    <input type="checkbox" value="today"> Сегодня
+                </label>
+                <label>
+                    <input type="checkbox" value="week"> На неделе
+                </label>
+            </div>
+            
+            <table class="calendar-grid">
+                <thead id="calendarGrid"></thead>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для событий дня -->
+    <div id="dayEventsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">События дня</h3>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    
+    <script src="/js/api.js"></script>
+    <script src="/js/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>📊 Управление мероприятиями</h1>
+            <div class="user-info">
+                <span>👤 <span id="userName"></span></span>
+                <button id="logoutBtn" class="btn btn-danger logout-btn">Выйти</button>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <button id="addEventBtn" class="btn btn-primary">➕ Добавить мероприятие</button>
+        </div>
+        
+        <div class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="eventsTableBody">
+                    <tr>
+                        <td colspan="5" style="text-align: center;">Загрузка...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для добавления/редактирования -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Добавить мероприятие</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Название *</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDescription">Описание</label>
+                    <textarea id="eventDescription" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventStart">Дата и время начала *</label>
+                    <input type="datetime-local" id="eventStart" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventEnd">Дата и время окончания *</label>
+                    <input type="datetime-local" id="eventEnd" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventCategory">Категория *</label>
+                    <select id="eventCategory" required>
+                        <option value="встреча">Встреча</option>
+                        <option value="вебинар">Вебинар</option>
+                        <option value="конференция">Конференция</option>
+                        <option value="бронь">Бронь</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventStatus">Статус *</label>
+                    <select id="eventStatus" required>
+                        <option value="опубликовано">Опубликовано</option>
+                        <option value="черновик">Черновик</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary close-modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/js/api.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
